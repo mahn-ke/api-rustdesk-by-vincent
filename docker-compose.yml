@@ -1,0 +1,31 @@
+#stream
+version: '3.8'
+
+services:
+  hbbs:
+    image: rustdesk/rustdesk-server:1.1.15
+    container_name: hbbs
+    restart: unless-stopped
+    ports:
+      - "21114:21114/tcp" # HTTP (Pro only)
+      - "21115:21115/tcp" # Signaling
+      - "21116:21116/tcp" # WebSocket
+      - "21116:21116/udp" # WebSocket
+      - "21118:21118/tcp" # WebSocket
+    command: ["hbbs", "-k", "_"]
+    volumes:
+      - data:/root
+
+  hbbr:
+    image: rustdesk/rustdesk-server:1.1.15
+    container_name: hbbr
+    restart: unless-stopped
+    ports:
+      - "21117:21117/tcp" # Relay
+      - "21119:21119/tcp" # WebSocket Relay
+    command: ["hbbr", "-k", "_"]
+    volumes:
+      - data:/roots
+
+volumes:
+  data:
