@@ -3,7 +3,7 @@ version: '3.8'
 
 services:
   hbbs:
-    image: rustdesk/rustdesk-server:1.1.15
+    image: rustdesk/rustdesk-server:1.1.16
     container_name: hbbs
     restart: unless-stopped
     ports:
@@ -17,7 +17,7 @@ services:
       - data:/root
 
   hbbr:
-    image: rustdesk/rustdesk-server:1.1.15
+    image: rustdesk/rustdesk-server:1.1.16
     container_name: hbbr
     restart: unless-stopped
     ports:
